@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "./productpb";
+
+service ProductService {
+    rpc GetProduct (ProductRequest) returns (ProductResponse);
+    rpc BidirectionalStreaming(stream ProductRequest) returns (stream ProductResponse);
+}
+
+
+message ProductRequest {
+    string id = 1;
+}
+
+message ProductResponse {
+    string id = 1;
+    string name = 2;
+    double price = 3;
+}
